@@ -1,0 +1,23 @@
+{
+  "name": "bot-whatsapp",
+  "version": "1.0.0",
+  "description": "bot for zap",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danzok/bot-whatsApp.git"
+  },
+  "keywords": [
+    "zap-bot",
+    "bot-for-zap"
+  ],
+  "author": "danzok",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danzok/bot-whatsApp/issues"
+  },
+  "homepage": "https://github.com/danzok/bot-whatsApp#readme"
+}
