@@ -1,5 +1,5 @@
-import  makeWASocket, {Browsers, DisconnectReason, useSingleFileLegacyAuthState } from '@adiwajshing/baileys';
-const { state, saveState } = await useSingleFileLegacyAuthState('./src/cache/auth_session-zap.json')
+import  makeWASocket, {Browsers, useMultiFileAuthState } from '@adiwajshing/baileys';
+const { state, saveCreds } = await useMultiFileAuthState('./src/cache')
 import * as fs from 'fs';
 
 async function connectzap(){
@@ -10,8 +10,10 @@ async function connectzap(){
         browser: ['@danzok','chrome','1.0.0']
     })
 
-    conn.ev.on('creds.update', saveState)
-    console.log(saveState)
+    
+    conn.ev.on('connection.update', (update) => {
+        console.log(update)
+        conn.ev.on('creds.update', saveCreds)
+    })
 }
-
 connectzap()
