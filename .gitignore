@@ -5,4 +5,4 @@ package-lock.json
 yarn.lock
 
 
-cache_session/**
+cache_session/

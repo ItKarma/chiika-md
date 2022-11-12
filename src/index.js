@@ -1,4 +1,4 @@
-import  makeWASocket, {Browsers, useMultiFileAuthState } from '@adiwajshing/baileys';
+import  makeWASocket, {Browsers, useMultiFileAuthState , DisconnectReason} from '@adiwajshing/baileys';
 const { state, saveCreds } = await useMultiFileAuthState('./src/cache_session')
 import { Boom } from '@hapi/boom';
 
@@ -28,5 +28,9 @@ async function connectzap(){
         conn.ev.on('creds.update', saveCreds)
     })
 
+     conn.ev.on('messages.upsert', async (m)  =>{
+        const fromId = m.messages[0].key.remoteJid
+        await conn.sendMessage(fromId, { text: 'Hello there!' })
+     })
 }
 connectzap()
