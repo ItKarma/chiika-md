@@ -2,8 +2,12 @@ import  makeWASocket, {Browsers, useMultiFileAuthState } from '@adiwajshing/bail
 import P from 'pino';
 import chatHandle from './handle/chat.js';
 import connectionHandle from './handle/connection.js';
+import { mongoClient } from './db/dbConnnection.js';
+import makeMongoStore from './services/makeMongoStore.js';
 
-const { state, saveCreds } = await useMultiFileAuthState('./src/sessions')
+const baileysCollection = mongoClient.db().collection('auth_info_baileys')
+const groupsCollection = mongoClient.db().collection('groups')
+const messagesCollection = mongoClient.db().collection('messages')
 
 export default async function main(){
     const conn = makeWASocket.default({
@@ -14,7 +18,11 @@ export default async function main(){
         browser: ['@danzok','chrome','1.0.0']
     })
 
+    const { state, saveCreds } = await useMultiFileAuthState(baileysCollection)
+    const store = await makeMongoStore(messagesCollection);
+
     conn.ev.on('creds.update', saveCreds)
+    store.bind(conn.ev);
 
     conn.ev.on('connection.update', (update)=> {
         connectionHandle(update, conn, main);
@@ -23,6 +31,7 @@ export default async function main(){
     conn.ev.on('messages.upsert', (msg) => {
         chatHandle(msg,conn);
     })
+
 }
 
 main()
