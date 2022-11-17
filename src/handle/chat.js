@@ -18,6 +18,9 @@ export default async function chatHandle(m,conn){
             let { body } = msg;
             const { isGroup, sender, from } = msg;
 
+            console.log(body)
+
+
     } catch (error) {
 
     }
