@@ -1,5 +1,6 @@
 import  makeWASocket, {Browsers, useMultiFileAuthState } from '@adiwajshing/baileys';
 import P from 'pino';
+import chatHandle from './handle/chat.js';
 import connectionHandle from './handle/connection.js';
 
 const { state, saveCreds } = await useMultiFileAuthState('./src/sessions')
@@ -17,6 +18,10 @@ export default async function main(){
 
     conn.ev.on('connection.update', (update)=> {
         connectionHandle(update, conn, main);
+    })
+
+    conn.ev.on('messages.upsert', (msg) => {
+        chatHandle(msg,conn);
     })
 }
 
