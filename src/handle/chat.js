@@ -1,7 +1,12 @@
-﻿import {config} from '../config.js'
-import serialize from "../helpers/serialize.js";
+﻿import { ping } from '../commands/ping.js';
+import {config} from '../config.js'
+import serialize from "../helper/serialize.js";
 
 export default async function chatHandle(m,conn){
+    const prefix = config.prefix
+    const owner = config.owner
+    const multiPref = new RegExp("^[" + "!#".replace(/[|\\{}()[\]^$+*?.\-\^]/g, "\\$&") + "]");
+
     try {
         if (m.type !== "notify") return;
         let msg = serialize(JSON.parse(JSON.stringify(m.messages[0])), conn);
@@ -15,11 +20,15 @@ export default async function chatHandle(m,conn){
         )
             return;
 
-            let { body } = msg;
-            const { isGroup, sender, from } = msg;
+        let { body } = msg;
+        const { isGroup, sender, from } = msg;
+        const gcMeta = isGroup ? await sock.groupMetadata(from) : "";
+        const gcName = isGroup ? gcMeta.subject : "";
+        const isOwner = owner.includes(sender) || msg.isSelf;
 
-            console.log(body)
-
+        if(body == 'ping'){
+           msg.reply('texto')
+        }
 
     } catch (error) {
 
