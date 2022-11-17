@@ -1,14 +1,10 @@
 ﻿import { MongoClient } from "mongodb";
 
-export default async function MongoConnection(uriMongo){
-    if(!uriMongo) throw new Error('uriMongo is required')
 
-    try {
-        const mongoClient = new MongoClient(uriMongo);
-        await mongoClient.connect();
-        console.log(' Connected your database!')
-        return mongoClient;
-    } catch (error) {
-        console.log(error);
-    }
-}
+let mongoClient = new MongoClient('mongodb+srv://Lopes01:Lopes01@cluster0.evxl2c8.mongodb.net/?retryWrites=true&w=majority');
+mongoClient.connect().then(()=>{
+    console.log('connected your database')
+})
+
+
+export default mongoClient;

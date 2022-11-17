@@ -6,6 +6,7 @@
         "5591984155848@s.whatsapp.net",
         "98765@s.whatsapp.net"
     ],
+    "yourDb": "url",
     "botname" : "chika", // bot name
     "footer": "chika • chika"
 }
