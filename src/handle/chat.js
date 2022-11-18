@@ -1,4 +1,5 @@
-﻿import {config} from '../config.js'
+﻿import pingTools from '../commands/tools/pingCommand.js';
+import {config} from '../config.js'
 import serialize from "../helper/serialize.js";
 
 export default async function chatHandle(m,conn){
@@ -26,7 +27,7 @@ export default async function chatHandle(m,conn){
         const isOwner = owner.includes(sender) || msg.isSelf;
 
         if(body == 'ping'){
-           msg.reply('texto')
+           pingTools(msg);
         }
 
     } catch (error) {
