@@ -1,6 +1,6 @@
-<p align="center">
-  <img width="460" height="300" src="https://user-images.githubusercontent.com/105066526/202765304-9c939bc9-0332-4b8f-9a68-0942782a210f.png">
-</p>
+# chiika bot
+  
+  ![Kaguya_Sama_Love_is_War_anime_girls_school_uniform_pink_hair_Chika_Fujiwara-1565505](https://user-images.githubusercontent.com/105066526/202766831-6add0c0e-16e8-4f68-99c4-4d58a6884e2b.jpg)
 
 👾 Projeto de  bot para whatsap, estou estudando e aprendendo a trabalhar melhor com a lib baileys.
 
