@@ -17,16 +17,23 @@
 👾 Projeto de  bot para whatsap, estou estudando e aprendendo a trabalhar melhor com a lib baileys.
 
 
-⚠️ Esta projeto esta publlico para ser auterado como desejar , para usar é simples, primeiro clone o projeto.
-
-`git clone https://github.com/danzok/bot-whatsApp`
+⚠️ Esta projeto esta publlico para ser auterado como desejar , para usar é simples.
+  
+primeiro clone o projeto :
+```
+git clone https://github.com/danzok/bot-whatsApp
+```
 
 apos isso instale as dependencias com .
 
-`npm install`
+```
+npm install
+  ```
 
 apos isso basta iniciar o bot com 
 
-`node .`
+```
+node . 
+  ```
 
 escanei o codigo e use e edite como quiser.
