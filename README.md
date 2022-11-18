@@ -3,10 +3,15 @@
   
  <div align="center">
   
-  <img alt="JavaScript" src="https://img.shields.io/github/repo-size/danzok/chiika-md"/>
+  <img alt="chiika-md" src="https://img.shields.io/github/repo-size/danzok/chiika-md"/>
+  <br>  
+  <img src="https://img.shields.io/badge/Baileys%20-4.4.0-green"/>
+  <img src="https://img.shields.io/github/stars/danzok/chiika-md?style=social"/>
   <br>
-  <img alt="JavaScript" src="https://img.shields.io/badge/javascript%20-%23323330.svg?&style=for-the-badge&logo=javascript&logoColor=%23F7DF1E"/>    
-  
+  <a>
+   <a href="https://chat.whatsapp.com/HsUtEBObAPG1GcJG5ksqus" alt="whatsapp">
+  <img src="https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white"/>
+    </a>
 </div>
 
 👾 Projeto de  bot para whatsap, estou estudando e aprendendo a trabalhar melhor com a lib baileys.
