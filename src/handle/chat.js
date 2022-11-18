@@ -1,5 +1,4 @@
-﻿import { ping } from '../commands/ping.js';
-import {config} from '../config.js'
+﻿import {config} from '../config.js'
 import serialize from "../helper/serialize.js";
 
 export default async function chatHandle(m,conn){
