@@ -24,13 +24,13 @@ primeiro clone o projeto :
 git clone https://github.com/danzok/bot-whatsApp
 ```
 
-apos isso instale as dependencias com .
+apos isso instale as dependencias com :
 
 ```
 npm install
   ```
 
-apos isso basta iniciar o bot com 
+apos isso basta iniciar o bot com :
 
 ```
 node . 
