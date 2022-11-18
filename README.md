@@ -1,7 +1,9 @@
-# chiika-bot
+
+ <p align="center">
+  <img width="400" height="300" src="https://user-images.githubusercontent.com/105066526/202765304-9c939bc9-0332-4b8f-9a68-0942782a210f.png">
+</p>
+
 👾 Projeto de  bot para whatsap, estou estudando e aprendendo a trabalhar melhor com a lib baileys.
- 
-![L0m5gTDB_400x400](https://user-images.githubusercontent.com/105066526/202343661-88fb2660-88c5-4a9c-b5b2-c9c273e31ae7.jpg)
 
 
 ⚠️ Esta projeto esta publlico para ser auterado como desejar , para usar é simples, primeiro clone o projeto.
