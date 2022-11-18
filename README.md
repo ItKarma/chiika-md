@@ -1,6 +1,5 @@
-
- <p align="center">
-  <img width="400" height="300" src="https://user-images.githubusercontent.com/105066526/202765304-9c939bc9-0332-4b8f-9a68-0942782a210f.png">
+<p align="center">
+  <img width="460" height="300" src="https://user-images.githubusercontent.com/105066526/202765304-9c939bc9-0332-4b8f-9a68-0942782a210f.png">
 </p>
 
 👾 Projeto de  bot para whatsap, estou estudando e aprendendo a trabalhar melhor com a lib baileys.
