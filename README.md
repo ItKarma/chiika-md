@@ -1,5 +1,5 @@
 # chiika bot
-  <img width="100%"  aling="center" alt="Github Image" src="https://user-images.githubusercontent.com/105066526/202766831-6add0c0e-16e8-4f68-99c4-4d58a6884e2b.jpg" /><br>
+  <img width="100%"  aling="center" alt="Github Image" src="https://c.wallhere.com/photos/81/ff/Kaguya_Sama_Love_is_War_Chika_Fujiwara_black_background-1665609.jpg!d" /><br>
 
 👾 Projeto de  bot para whatsap, estou estudando e aprendendo a trabalhar melhor com a lib baileys.
 
