@@ -1,4 +1,5 @@
 ﻿import pingTools from '../commands/tools/pingCommand.js';
+import sysInforTools from '../commands/tools/sysInforCommand.js';
 import {config} from '../config.js'
 import serialize from "../helper/serialize.js";
 
@@ -26,9 +27,9 @@ export default async function chatHandle(m,conn){
         const gcName = isGroup ? gcMeta.subject : "";
         const isOwner = owner.includes(sender) || msg.isSelf;
 
-        if(body == 'ping'){
-           pingTools(msg);
-        }
+        if(body == 'ping') pingTools(msg);
+
+        if(body == 'sInfor') sysInforTools(msg);
 
     } catch (error) {
 
