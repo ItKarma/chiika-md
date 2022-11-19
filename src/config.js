@@ -8,5 +8,5 @@
     ],
     "yourDb": "url",
     "botname" : "chika", // bot name
-    "footer": "chika • chika"
+    "footer": "chika • md"
 }
