@@ -1,13 +1,13 @@
 ﻿import pingTools from '../commands/tools/pingCommand.js';
 import sysInforTools from '../commands/tools/sysInforCommand.js';
-import fatosRandom from '../commands/func/fatosRandom.js'
 import {config} from '../config.js'
 import serialize from "../helper/serialize.js";
+import fatosPlugin from '../commands/plugins/plugin_fatos.js';
+import waifuPlugin from '../commands/plugins/plugin_waifu.js';
 
 export default async function chatHandle(m,conn){
     const prefix = config.prefix
     const owner = config.owner
-    const multiPref = new RegExp("^[" + "!#".replace(/[|\\{}()[\]^$+*?.\-\^]/g, "\\$&") + "]");
 
     try {
         if (m.type !== "notify") return;
@@ -28,11 +28,29 @@ export default async function chatHandle(m,conn){
         const gcName = isGroup ? gcMeta.subject : "";
         const isOwner = owner.includes(sender) || msg.isSelf;
 
-        if(body == 'ping') pingTools(msg);
+        const str = body.startsWith(prefix) ? body : ''
+        const args = str.trim().split(/ +/).slice(1);
+        const q = args.join(" ");
+        const isCommand = body.startsWith(prefix);
+        const command = body.slice(1).trim().split(/ +/).shift().toLowerCase()
 
-        if(body == 'sInfor') sysInforTools(msg);
+        switch(command){
+            case 'ping':
+                pingTools(msg);
+                break;
 
-        if(body == 'fatos') fatosRandom(msg,conn)
+            case 'sistem':
+                sysInforTools(msg);
+                break;
+
+            case 'fatos':
+                fatosPlugin(msg,conn);
+                break;
+
+            case 'waifu':
+                waifuPlugin(msg,conn);
+                break;
+        }
 
     } catch (error) {
 
