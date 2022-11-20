@@ -9,7 +9,7 @@ export default async function picsPlugin (msg,conn,category) {
     console.log(category)
     let data = await axiosUtils(`https://api.waifu.pics/sfw/${category}`);
 
-    if(data.data.message) return msg.reply('nao achei a categoria que sugeriu.');
+    if(data.data.message) return await msg.reply('nao achei a categoria que sugeriu.');
 
     const buttons = [
         {buttonId: '!menu', buttonText: {displayText: 'MENU'}, type: 1},
