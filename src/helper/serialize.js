@@ -122,9 +122,7 @@ export default function serialize(msg, conn) {
 			msg.message?.[msg.type]?.text ||
 			msg.message?.[msg.type]?.caption ||
 			(msg.type === "listResponseMessage" && msg.message?.[msg.type]?.singleSelectReply?.selectedRowId) ||
-			(msg.type === "buttonsResponseMessage" &&
-				msg.message?.[msg.type]?.selectedButtonId?.includes("SMH") &&
-				msg.message?.[msg.type]?.selectedButtonId) ||
+			(msg.type === "buttonsResponseMessage" && msg.message?.[msg.type]?.selectedButtonId && msg.message?.[msg.type]?.selectedButtonId) ||
 			(msg.type === "templateButtonReplyMessage" && msg.message?.[msg.type]?.selectedId) ||
 			"";
 		msg.reply = (text) => conn.sendMessage(msg.from, { text }, { quoted: msg });
