@@ -4,6 +4,7 @@ import {config} from '../config.js'
 import serialize from "../helper/serialize.js";
 import fatosPlugin from '../commands/plugins/plugin_fatos.js';
 import waifuPlugin from '../commands/plugins/plugin_waifu.js';
+import picsPlugin from '../commands/plugins/plugin_pics.waifu.js';
 
 export default async function chatHandle(m,conn){
     const prefix = config.prefix
@@ -45,6 +46,10 @@ export default async function chatHandle(m,conn){
 
             case 'fatos':
                 fatosPlugin(msg,conn);
+                break;
+
+            case 'pics':
+                picsPlugin(msg,conn,q);
                 break;
 
             case 'waifu':
