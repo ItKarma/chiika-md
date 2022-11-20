@@ -33,7 +33,7 @@ export default async function chatHandle(m,conn){
         const q = args.join(" ");
         const isCommand = body.startsWith(prefix);
         const command = body.slice(1).trim().split(/ +/).shift().toLowerCase()
-
+        
         switch(command){
             case 'ping':
                 pingTools(msg);
