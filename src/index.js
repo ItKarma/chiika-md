@@ -2,11 +2,8 @@ import  makeWASocket, {Browsers } from '@adiwajshing/baileys';
 import P from 'pino';
 import chatHandle from './handle/chat.js';
 import connectionHandle from './handle/connection.js';
-import { collection } from './services/collection.js';
-import { useMongoAuthState } from './services/useMongoAuthState.js';
-
-
-const baileysCollection = collection.baileysCollection('infor_connection');
+import { useMongoAuthState } from './repositories/useMongoAuthState.js';
+import { baileysCollection } from './services/serviceCollections.js';
 
 const { state, saveCreds } = await useMongoAuthState(baileysCollection)
 
