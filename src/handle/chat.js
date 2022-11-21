@@ -5,16 +5,15 @@ import serialize from "../helper/serialize.js";
 import fatosPlugin from '../commands/plugins/plugin_fatos.js';
 import waifuPlugin from '../commands/plugins/plugin_waifu.js';
 import picsPlugin from '../commands/plugins/plugin_pics.waifu.js';
-import { makeMongoStore } from '../services/makeMongoStore.js';
-import  { collection } from '../services/collection.js';
-
+import { makeMongoStore } from '../repositories/makeMongoStore.js';
+import { messageCollection } from '../services/serviceCollections.js';
+import { consultDb } from '../commands/clients/consultDb.js';
 
 export default async function chatHandle (m,conn) {
 
     const prefix = config.prefix
     const owner = config.owner
-    const messagesCollection = collection.chatCollection('messages')
-    const storeUser = await makeMongoStore(messagesCollection);
+    const storeUser = await makeMongoStore(messageCollection);
     
     try {
         if (m.type !== "notify") return;
@@ -64,6 +63,8 @@ export default async function chatHandle (m,conn) {
                 break;
 
             case 'users': 
+                consultDb(msg,conn);
+                break
                 
         }
 

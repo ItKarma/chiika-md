@@ -1,6 +1,6 @@
 import mongoClient from "../db/dbConnnection.js"
 
-export const collection = ({
+export  const  collection = ({
     chatCollection: (str) => {
         return mongoClient.db().collection(str);
     },
