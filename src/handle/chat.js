@@ -80,6 +80,11 @@ export default async function chatHandle (m,conn) {
 
             case 'agree':
                 storeUser.bind(msg,conn)
+                
+                setTimeout(()=>{
+                    msg.reply(`Dados Salvos com sucesso!`)
+                }, 3000)
+
                 break ;
 
         }

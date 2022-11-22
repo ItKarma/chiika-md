@@ -19,5 +19,5 @@ export let firstTime = async (msg, conn) => {
           headerType: 1
       } 
 
-     await conn.sendMessage(msg.from, buttonMessage, { quoted : msg})
+    return await conn.sendMessage(msg.from, buttonMessage, { quoted : msg})
 }
