@@ -9,7 +9,7 @@ export default async function picsPlugin (msg,conn,category) {
     console.log(category)
     let data = await axiosUtils(`https://api.waifu.pics/sfw/${category}`);
 
-    if(data.data.message) return await msg.reply('nao achei a categoria que sugeriu.');
+    if(data.data.message) return await msg.reply('Não achei a categoria que sugeriu.');
 
     const buttons = [
         {buttonId: '!menu', buttonText: {displayText: 'MENU'}, type: 1},
@@ -19,7 +19,7 @@ export default async function picsPlugin (msg,conn,category) {
       
       const buttonMessage = {
           image: {url: data.data.url },
-          caption: `*A Categoria usada foi ${category}, Se deseja usar a mesma categoria q esta aperte no botao 'self',para voltar para a escolha de pics aleatoria aperte random*`,
+          caption: `*A Categoria usada foi ${category}, Se deseja usar a mesma categoria que esta aperte no botão 'SELF', para voltar a escolha de pics aleatória aperte RANDOM*`,
           footer: config.footer,
           buttons: buttons,
           headerType: 4
