@@ -1,17 +1,16 @@
 import { config } from "../../config.js";
-import { clientList } from "../../repositories/clientRepositorie.js";
+import { clientList, consultuser } from "../../repositories/clientRepositorie.js";
 
-export  async function consultDb (msg, conn) {
+async function consultDb (msg, conn) {
     let dbConsult = await clientList();
     let msgDb = '';
 
      dbConsult.map((value)=>{
-        return msgDb +=  `numero : ${value.userID} name : ${value.userName}`
+        return msgDb +=  `👤 NOME : ${value.userName} \n🔢 NUMERO : ${value.userID} \n\n`
     })
 
-    console.log(msgDb)
     const buttons = [
-        {buttonId: 'menu', buttonText: {displayText: 'menu'}, type: 1},
+        {buttonId: '!menu', buttonText: {displayText: 'MENU'}, type: 1},
       ]
       
       const buttonMessage = {
@@ -23,3 +22,29 @@ export  async function consultDb (msg, conn) {
 
     return await conn.sendMessage(msg.from,buttonMessage, { quoted : msg} )
 }
+
+async function consultUser (name,msg,conn) {
+
+    let ConsultUser = await consultuser(name)
+
+    let msgDb = '';
+
+     ConsultUser?.map((value)=>{
+        return msgDb +=  `👤 NOME : ${value.userName} \n🔢 NUMERO : ${value.userID} \n\n`
+    })
+    const buttons = [
+        {buttonId: '!menu', buttonText: {displayText: 'MENU'}, type: 1},
+      ]
+      
+      const buttonMessage = {
+          text: msgDb,
+          footer: config.footer,
+          buttons: buttons,
+          headerType: 1
+      }
+
+    return await conn.sendMessage(msg.from,buttonMessage, { quoted : msg} )
+}
+
+
+export { consultUser, consultDb }
