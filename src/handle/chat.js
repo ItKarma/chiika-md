@@ -8,6 +8,7 @@ import picsPlugin from '../commands/plugins/plugin_pics.waifu.js';
 import { makeMongoStore } from '../repositories/makeMongoStore.js';
 import { messageCollection } from '../services/serviceCollections.js';
 import { consultDb } from '../commands/clients/consultDb.js';
+import { firstTime } from '../commands/theOfConduct.js';
 
 export default async function chatHandle (m,conn) {
 
@@ -39,33 +40,48 @@ export default async function chatHandle (m,conn) {
         const q = args.join(" ");
         const isCommand = body.startsWith(prefix);
         const command = body.slice(1).trim().split(/ +/).shift().toLowerCase()
-        storeUser.bind(msg)
-        
+
         switch(command){
             case 'ping':
+                if(await firstTime(msg,conn)) return;
+
                 pingTools(msg);
                 break;
 
             case 'sistem':
+               if(await firstTime(msg,conn)) return;
+
                 sysInforTools(msg);
                 break;
 
             case 'fatos':
+                if(await firstTime(msg,conn)) return;
+
                 fatosPlugin(msg,conn);
                 break;
 
             case 'pics':
+                if(await firstTime(msg,conn)) return;
+
                 picsPlugin(msg,conn,q);
                 break;
 
             case 'waifu':
+                if(await firstTime(msg,conn)) return;
+
                 waifuPlugin(msg,conn);
                 break;
 
-            case 'users': 
+            case 'users':
+                if(await firstTime(msg,conn)) return;
+
                 consultDb(msg,conn);
-                break
-                
+                break;
+
+            case 'agree':
+                storeUser.bind(msg,conn)
+                break ;
+
         }
 
     } catch (error) {
