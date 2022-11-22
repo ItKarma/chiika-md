@@ -10,5 +10,15 @@ let clientList = async () => {
     }
 }
 
+let consultuser = async (name) => {
+    try {
+        let consultUsers = await messageCollection.findOne({ userName : name}).toArray()
+        console.log(consultUsers)
+        return consultUsers
+    } catch (error) {
+        console.log(error)
+    }
+}
 
-export { clientList }
+
+export { clientList, consultuser }

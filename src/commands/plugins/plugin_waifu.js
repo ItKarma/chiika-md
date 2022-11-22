@@ -1,4 +1,4 @@
-import axiosUtils from '../../utils/axios_Utils.js';
+import {axiosUtils} from '../../utils/axios_Utils.js';
 import {config} from '../../config.js';
 
 
