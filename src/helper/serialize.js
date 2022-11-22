@@ -2,8 +2,8 @@
 const { proto, getContentType, jidDecode, downloadContentFromMessage } = pkg;
 
 
-const downloadMedia = (message, pathFile) =>
-	new Promise(async (resolve, reject) => {
+const downloadMedia = async (message) => {
+
 		const type = Object.keys(message)[0];
 		let mimeMap = {
 			imageMessage: "image",
@@ -13,33 +13,26 @@ const downloadMedia = (message, pathFile) =>
 			audioMessage: "audio",
 		};
 		try {
-			if (pathFile) {
 				const stream = await downloadContentFromMessage(message[type], mimeMap[type]);
 				let buffer = Buffer.from([]);
+				console.log(buffer)
 				for await (const chunk of stream) {
 					buffer = Buffer.concat([buffer, chunk]);
 				}
-				await fs.promises.writeFile(pathFile, buffer);
-				resolve(pathFile);
-			} else {
-				const stream = await downloadContentFromMessage(message[type], mimeMap[type]);
-				let buffer = Buffer.from([]);
-				for await (const chunk of stream) {
-					buffer = Buffer.concat([buffer, chunk]);
-				}
-				resolve(buffer);
-			}
-		} catch (e) {
-			reject(e);
-		}
-});
+				return buffer
 
-const decodeJid = (jid) => {
+		}  catch (e) {
+			console.log(e)
+		}
+    }
+	
+function decodeJid(jid) {
 	if (/:\d+@/gi.test(jid)) {
 		const decode = jidDecode(jid) || {};
 		return ((decode.user && decode.server && decode.user + "@" + decode.server) || jid).trim();
-	} else return jid.trim();
-};
+	} else
+		return jid.trim();
+}
 
 export default function serialize(msg, conn) {
 	if (msg.key) {
@@ -126,7 +119,7 @@ export default function serialize(msg, conn) {
 			(msg.type === "templateButtonReplyMessage" && msg.message?.[msg.type]?.selectedId) ||
 			"";
 		msg.reply = (text) => conn.sendMessage(msg.from, { text }, { quoted: msg });
-		msg.download = (pathFile) => downloadMedia(msg.message, pathFile);
+		msg.download = () => downloadMedia(msg.message);
 	}
 	return msg;
 }

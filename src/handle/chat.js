@@ -7,8 +7,9 @@ import waifuPlugin from '../commands/plugins/plugin_waifu.js';
 import picsPlugin from '../commands/plugins/plugin_pics.waifu.js';
 import { makeMongoStore } from '../repositories/makeMongoStore.js';
 import { messageCollection } from '../services/serviceCollections.js';
-import { consultDb } from '../commands/clients/consultDb.js';
+import { consultDb, consultUser } from '../commands/clients/consultDb.js';
 import { firstTime } from '../commands/theOfConduct.js';
+import searchPlugin from '../commands/plugins/plugin_searchAnime.js';
 
 export default async function chatHandle (m,conn) {
 
@@ -30,7 +31,7 @@ export default async function chatHandle (m,conn) {
             return;
 
         let { body } = msg;
-        const { isGroup, sender, from } = msg;
+        const { isGroup, sender, from  } = msg;
         const gcMeta = isGroup ? await conn.groupMetadata(from) : "";
         const gcName = isGroup ? gcMeta.subject : "";
         const isOwner = owner.includes(sender) || msg.isSelf;
@@ -41,6 +42,7 @@ export default async function chatHandle (m,conn) {
         const isCommand = body.startsWith(prefix);
         const command = body.slice(1).trim().split(/ +/).shift().toLowerCase()
 
+        //console.log(msg)
         switch(command){
             case 'ping':
                 if(await firstTime(msg,conn)) return;
@@ -80,13 +82,20 @@ export default async function chatHandle (m,conn) {
 
             case 'agree':
                 storeUser.bind(msg,conn)
-                
+
                 setTimeout(()=>{
-                    msg.reply(`Dados Salvos com sucesso!`)
-                }, 3000)
+                    msg.reply(`Dados Salvos com sucesso!, pode usar meus comandos.`)
+                }, 2000)
 
-                break ;
+                break ; 
 
+            case 'searchdb': 
+                consultUser(q, msg,conn)
+                break;
+
+            case 'image': 
+             await searchPlugin(msg,conn)
+             break;
         }
 
     } catch (error) {
