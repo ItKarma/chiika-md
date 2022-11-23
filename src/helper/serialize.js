@@ -15,7 +15,7 @@ const downloadMedia = async (message) => {
 		try {
 				const stream = await downloadContentFromMessage(message[type], mimeMap[type]);
 				let buffer = Buffer.from([]);
-				console.log(buffer)
+				//console.log(buffer)
 				for await (const chunk of stream) {
 					buffer = Buffer.concat([buffer, chunk]);
 				}

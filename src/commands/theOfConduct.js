@@ -9,7 +9,7 @@ export let firstTime = async (msg, conn) => {
     let messageTxt = `*Olá ${pushName}*, Você não está salvo no meu banco de dados , então posso salvar seu contato certo? , aperte em Aceito , e você podera usar meus comandos sem restrição.`
 
     const buttons = [
-        {buttonId: '!agree', buttonText: {displayText: 'ACEITO OS TERMOS'}, type: 1},
+        {buttonId: '!agree', buttonText: {displayText: 'ACEITO'}, type: 1},
       ]
       
       const buttonMessage = {
