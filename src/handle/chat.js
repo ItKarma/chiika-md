@@ -10,6 +10,7 @@ import { messageCollection } from '../services/serviceCollections.js';
 import { consultDb, consultUser } from '../commands/clients/consultDb.js';
 import { firstTime } from '../commands/theOfConduct.js';
 import searchPlugin from '../commands/plugins/plugin_searchAnime.js';
+import { stickerPlugin } from '../commands/plugins/plugin_sticker.js';
 
 export default async function chatHandle (m,conn) {
 
@@ -90,12 +91,23 @@ export default async function chatHandle (m,conn) {
                 break ; 
 
             case 'searchdb': 
-                consultUser(q, msg,conn)
+            if(await firstTime(msg,conn)) return;
+
+              consultUser(q, msg,conn)
                 break;
 
             case 'image': 
+            if(await firstTime(msg,conn)) return;
+
              await searchPlugin(msg,conn)
              break;
+
+             case 'sticker':
+                if(await firstTime(msg,conn)) return;
+
+                stickerPlugin(msg,conn)
+                break;
+
         }
 
     } catch (error) {
