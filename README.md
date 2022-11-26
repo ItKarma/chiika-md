@@ -7,10 +7,6 @@
   <br>  
   <img src="https://img.shields.io/badge/Baileys%20-4.4.0-green"/>
   <img src="https://img.shields.io/github/stars/danzok/chiika-md?style=social"/>
-  <br>
-  Group
-  </br>
-  <a>
 </div>
 
 👾 Projeto de  bot para whatsap, estou estudando e aprendendo a trabalhar melhor com a lib baileys.
