@@ -1,8 +1,11 @@
 # chiika bot
-  <img width="100%"  aling="center" alt="Github Image" src="https://c.wallhere.com/photos/81/ff/Kaguya_Sama_Love_is_War_Chika_Fujiwara_black_background-1665609.jpg!d" /><br>
+
+<img width="30%" align="center" src="https://user-images.githubusercontent.com/105066526/204310347-e556ef60-53dd-42c4-9335-db1015e5510c.png" />
   
  <div align="center">
-  
+
+  <br>
+
   <img alt="chiika-md" src="https://img.shields.io/github/repo-size/danzok/chiika-md"/>
   <br>  
   <img src="https://img.shields.io/badge/Baileys%20-4.4.0-green"/>
