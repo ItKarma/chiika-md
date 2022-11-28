@@ -1,7 +1,9 @@
 # chiika bot
-
+ <p align="center">
+  
 <img width="30%" align="center" src="https://user-images.githubusercontent.com/105066526/204310347-e556ef60-53dd-42c4-9335-db1015e5510c.png" />
   
+  </p>
  <div align="center">
 
   <br>
