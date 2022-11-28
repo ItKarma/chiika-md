@@ -12,7 +12,7 @@ import { firstTime } from '../commands/theOfConduct.js';
 import searchPlugin from '../commands/plugins/plugin_searchAnime.js';
 import { stickerPlugin } from '../commands/plugins/plugin_sticker.js';
 import { menuCommand } from '../commands/clients/comand.js';
-
+import {commandAWaitSearch,commandAwait,commandAwaitSticker,commandError } from '../commands/clients/comandWait.js'
 export default async function chatHandle (m,conn) {
 
     const prefix = config.prefix
@@ -61,17 +61,23 @@ export default async function chatHandle (m,conn) {
             case 'fatos':
                 if(await firstTime(msg,conn)) return;
 
+                commandAwait(msg);
+
                 fatosPlugin(msg,conn);
                 break;
 
             case 'pics':
                 if(await firstTime(msg,conn)) return;
 
+                commandAwait(msg);
+
                 picsPlugin(msg,conn,q);
                 break;
 
             case 'waifu':
                 if(await firstTime(msg,conn)) return;
+
+                commandAwait(msg);
 
                 waifuPlugin(msg,conn);
                 break;
@@ -97,15 +103,16 @@ export default async function chatHandle (m,conn) {
               consultUser(q, msg,conn)
                 break;
 
-            case 'image': 
+            case 'sauce': 
             if(await firstTime(msg,conn)) return;
-
+            commandAWaitSearch(msg)
              await searchPlugin(msg,conn)
              break;
 
-             case 'sticker':
+             case 'sticker' :
+             case 's':
                 if(await firstTime(msg,conn)) return;
-
+                commandAwaitSticker(msg)
                 stickerPlugin(msg,conn)
                 break;
             case 'menu':

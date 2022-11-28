@@ -19,10 +19,7 @@ export async function menuCommand (msg, conn) {
 └ _envie-me apenas o comando e irei lhe enviar um fato random_
 
 ❏ ${config.prefix}report [ _reason_ ]
-└ _avise-me meu dono sobre bugs etc.._
-
-☰ \`\`\`Information\`\`\`
-✆ developer : _danzok.dev_`
+└ _avise-me meu dono sobre bugs etc.._`
 
 const buttons = [
     {buttonId: '!repo', buttonText: {displayText: 'My repo'}, type: 1},
