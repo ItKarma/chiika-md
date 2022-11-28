@@ -10,12 +10,14 @@ export default async function waifuPlugin (msg,conn) {
     
     let category = randomUtils(categoryWaifu);
 
-    let data = await fetchGet_Utils(`https://api.waifu.im/random/?selected_tags=${category}`);
+    let data = await fetchGet_Utils(`https://api.waifu.im/search/?included_tags=${category}`);
 
     const buttons = [
         {buttonId: '!menu', buttonText: {displayText: 'MENU'}, type: 1},
         {buttonId: '!waifu', buttonText: {displayText: 'PROXIMA'}, type: 1}
       ]
+
+      console.log(data.images[0].url);
 
       const buttonMessage = {
           image: {url: data.images[0].url },

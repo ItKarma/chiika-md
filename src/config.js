@@ -1,5 +1,5 @@
 ﻿export const config = {
-    "prefix" : "!",
+    "prefix" : ".",
     "owner" : [
         // add your number here
         // you can add multiple numbers

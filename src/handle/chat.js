@@ -11,6 +11,7 @@ import { consultDb, consultUser } from '../commands/clients/consultDb.js';
 import { firstTime } from '../commands/theOfConduct.js';
 import searchPlugin from '../commands/plugins/plugin_searchAnime.js';
 import { stickerPlugin } from '../commands/plugins/plugin_sticker.js';
+import { menuCommand } from '../commands/clients/comand.js';
 
 export default async function chatHandle (m,conn) {
 
@@ -85,7 +86,7 @@ export default async function chatHandle (m,conn) {
                 storeUser.bind(msg,conn)
 
                 setTimeout(()=>{
-                    msg.reply(`Dados Salvos com sucesso!, pode usar meus comandos.`)
+                    msg.reply(`Dados Salvos com sucesso!, aperte no butao e veja meus comandos.`)
                 }, 2000)
 
                 break ; 
@@ -107,6 +108,11 @@ export default async function chatHandle (m,conn) {
 
                 stickerPlugin(msg,conn)
                 break;
+            case 'menu':
+                if(await firstTime(msg,conn)) return;
+            
+               menuCommand(msg,conn)
+            break
 
         }
 
