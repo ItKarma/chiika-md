@@ -2,15 +2,10 @@
 import sysInforTools from '../commands/tools/sysInforCommand.js';
 import {config} from '../config.js'
 import serialize from "../helper/serialize.js";
-import fatosPlugin from '../commands/plugins/plugin_fatos.js';
-import waifuPlugin from '../commands/plugins/plugin_waifu.js';
-import picsPlugin from '../commands/plugins/plugin_pics.waifu.js';
 import { makeMongoStore } from '../repositories/makeMongoStore.js';
 import { messageCollection } from '../services/serviceCollections.js';
 import { consultDb, consultUser } from '../commands/clients/consultDb.js';
 import { firstTime } from '../commands/theOfConduct.js';
-import searchPlugin from '../commands/plugins/plugin_searchAnime.js';
-import { stickerPlugin } from '../commands/plugins/plugin_sticker.js';
 import { menuCommand } from '../commands/clients/comand.js';
 import {commandAWaitSearch,commandAwait,commandAwaitSticker,commandError } from '../commands/clients/comandWait.js'
 export default async function chatHandle (m,conn) {
@@ -58,30 +53,6 @@ export default async function chatHandle (m,conn) {
                 sysInforTools(msg);
                 break;
 
-            case 'fatos':
-                if(await firstTime(msg,conn)) return;
-
-                commandAwait(msg);
-
-                fatosPlugin(msg,conn);
-                break;
-
-            case 'pics':
-                if(await firstTime(msg,conn)) return;
-
-                commandAwait(msg);
-
-                picsPlugin(msg,conn,q);
-                break;
-
-            case 'waifu':
-                if(await firstTime(msg,conn)) return;
-
-                commandAwait(msg);
-
-                waifuPlugin(msg,conn);
-                break;
-
             case 'users':
                 if(await firstTime(msg,conn)) return;
 
@@ -101,19 +72,6 @@ export default async function chatHandle (m,conn) {
             if(await firstTime(msg,conn)) return;
 
               consultUser(q, msg,conn)
-                break;
-
-            case 'sauce': 
-            if(await firstTime(msg,conn)) return;
-            commandAWaitSearch(msg)
-             await searchPlugin(msg,conn)
-             break;
-
-             case 'sticker' :
-             case 's':
-                if(await firstTime(msg,conn)) return;
-                commandAwaitSticker(msg)
-                stickerPlugin(msg,conn)
                 break;
             case 'menu':
                 if(await firstTime(msg,conn)) return;
